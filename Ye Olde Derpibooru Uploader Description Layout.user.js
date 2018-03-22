@@ -15,31 +15,29 @@
 // @noframes
 // ==/UserScript==
 (function(){
-  const block = document.querySelector('#content > .block:first-child');
+  const block = document.querySelector('#content > .block:first-child'),
+        imagemeta = document.querySelector('[id^="image_meta_"]'),
+        extrameta = document.querySelector('#extrameta'),
+        imageDescription = document.querySelector('.image-description'),
+        descriptionHeader = document.createElement('h3'),
+        descriptionForm = document.querySelector('#description-form');
   if (block === null)
     return;
   // Move uploader and image information
-  const extrameta = document.querySelector('#extrameta');
-  block.appendChild(extrameta);
   extrameta.appendChild(document.querySelector('.image-size'));
 
-  // Copy and modify classes from its sibling
-  extrameta.className = block.firstChild.className;
-  extrameta.classList.remove('block__header');
+  // Revert metadata bar
+  imagemeta.classList.remove('flex--spaced-out');
+  extrameta.classList.remove('block__header', 'block__header--user-credit');
   extrameta.classList.add('block__header--sub', 'block__header--light');
-  extrameta.firstChild.classList.add('spacing-left');
 
   // Revert description box styling
-  const imageDescription = document.querySelector('.image-description');
   imageDescription.style.background = 'whitesmoke';
-  imageDescription.classList.add('layout--narrow');
-  const descriptionHeader = document.createElement('h3');
   descriptionHeader.innerText = 'Uploader Description';
   descriptionHeader.style.margin = '5px';
   imageDescription.insertBefore(descriptionHeader, imageDescription.firstChild);
 
   // Revert description editor width
-  const descriptionForm = document.querySelector('#description-form');
   if (descriptionForm !== null)
     descriptionForm.classList.add('layout--narrow');
 })();

@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Ye Olde Derpibooru Uploader Description Layout
 // @description Move uploader credit to its former location
-// @version     1.0.1
+// @version     1.0.2
 // @author      Marker
 // @license     MIT
 // @namespace   https://github.com/marktaiwan/
@@ -27,8 +27,8 @@
   extrameta.appendChild(document.querySelector('.image-size'));
 
   // Revert metadata bar
-  imagemeta.classList.remove('flex--spaced-out');
-  extrameta.classList.remove('block__header', 'block__header--user-credit');
+  imagemeta.classList.remove('image-metabar', 'flex--spaced-out');
+  extrameta.classList.remove('image-metabar', 'block__header', 'block__header--user-credit');
   extrameta.classList.add('block__header--sub', 'block__header--light');
 
   // Revert description box styling

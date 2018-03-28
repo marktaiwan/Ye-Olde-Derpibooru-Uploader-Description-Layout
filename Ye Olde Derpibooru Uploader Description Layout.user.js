@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Ye Olde Derpibooru Uploader Description Layout
 // @description Move uploader credit to its former location
-// @version     1.0.3
+// @version     1.0.4
 // @author      Marker
 // @license     MIT
 // @namespace   https://github.com/marktaiwan/
@@ -15,32 +15,43 @@
 // @noframes
 // ==/UserScript==
 (function(){
-  const block = document.querySelector('#content > .block:first-child'),
-        imagemeta = document.querySelector('[id^="image_meta_"]'),
+  'use strict';
+  const imagemeta = document.querySelector('[id^="image_meta_"]'),
         extrameta = document.querySelector('#extrameta'),
         imageDescription = document.querySelector('.image-description'),
-        descriptionHeader = document.createElement('h3'),
-        descriptionForm = document.querySelector('#description-form');
-  // Exit if any of these elements doesn't exist
-  if ([block, imagemeta, extrameta, imageDescription].some(ele => ele === null)) {
-    return;
+        descriptionForm = document.querySelector('#description-form'),
+        content = document.querySelector('#content'),
+        tagBox = document.querySelector('.js-tagsauce');
+
+  // Run if elements exists on page
+  if ([imagemeta, extrameta].every(ele => ele !== null)) {
+    // Move uploader and image information
+    extrameta.appendChild(document.querySelector('.image-size'));
+    // Revert metadata bar
+    imagemeta.classList.remove('image-metabar', 'flex--spaced-out');
+    extrameta.classList.remove('image-metabar', 'flex--spaced-out', 'block__header', 'block__header--user-credit');
+    extrameta.classList.add('block__header--sub', 'block__header--light');
+    extrameta.style.padding = '0px 12px'; // 0px up and down, 12px on the sides
   }
-  // Move uploader and image information
-  extrameta.appendChild(document.querySelector('.image-size'));
 
-  // Revert metadata bar
-  imagemeta.classList.remove('image-metabar', 'flex--spaced-out');
-  extrameta.classList.remove('image-metabar', 'flex--spaced-out', 'block__header', 'block__header--user-credit');
-  extrameta.classList.add('block__header--sub', 'block__header--light');
-  extrameta.style.padding = '0px 12px'; // 0px up and down, 12px on the sides
+  if ([content, imageDescription, tagBox].every(ele => ele !== null)) {
+    const descriptionHeader = document.createElement('h3'),
+          newDiv = document.createElement('div');
 
-  // Revert description box styling
-  imageDescription.style.background = 'whitesmoke';
-  descriptionHeader.innerText = 'Uploader Description';
-  descriptionHeader.style.margin = '5px';
-  imageDescription.insertBefore(descriptionHeader, imageDescription.firstChild);
+    // Revert tag width
+    newDiv.classList.add('layout--narrow');
+    tagBox.querySelector('.js-imageform').classList.add('layout--narrow');
+    content.insertBefore(newDiv, imageDescription.parentElement);
+    content.insertBefore(tagBox, imageDescription.parentElement);
+    newDiv.appendChild(imageDescription);
+    if (descriptionForm !== null) {
+      newDiv.appendChild(descriptionForm);
+    }
 
-  // Revert description editor width
-  if (descriptionForm !== null)
-    descriptionForm.classList.add('layout--narrow');
+    // Revert description box styling
+    imageDescription.style.background = 'whitesmoke';
+    descriptionHeader.innerText = 'Uploader Description';
+    descriptionHeader.style.margin = '5px';
+    imageDescription.insertBefore(descriptionHeader, imageDescription.firstChild);
+  }
 })();

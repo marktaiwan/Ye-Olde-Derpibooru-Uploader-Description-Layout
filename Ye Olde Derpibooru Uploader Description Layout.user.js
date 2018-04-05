@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Ye Olde Derpibooru Uploader Description Layout
 // @description Move uploader credit to its former location
-// @version     1.0.5
+// @version     1.0.6
 // @author      Marker
 // @license     MIT
 // @namespace   https://github.com/marktaiwan/
@@ -16,8 +16,7 @@
 // ==/UserScript==
 (function(){
   'use strict';
-  const imagemeta = document.querySelector('[id^="image_meta_"]'),
-        extrameta = document.querySelector('#extrameta'),
+  const extrameta = document.querySelector('#extrameta'),
         imageDescription = document.querySelector('.image-description'),
         descriptionForm = document.querySelector('#description-form'),
         content = document.querySelector('#content'),
@@ -27,6 +26,7 @@
   // Revert metadata bar
   if (extrameta !== null) {
     extrameta.classList.add('block__header--light');
+    extrameta.style.paddingTop = '4px';
   }
 
   // Run if elements exists on page

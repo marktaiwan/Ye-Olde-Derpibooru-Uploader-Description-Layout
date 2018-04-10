@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Ye Olde Derpibooru Uploader Description Layout
 // @description Move uploader credit to its former location
-// @version     1.0.7
+// @version     1.0.8
 // @author      Marker
 // @license     MIT
 // @namespace   https://github.com/marktaiwan/
@@ -42,7 +42,9 @@
     }
     content.insertBefore(newDiv, imageDescription.parentElement);
     content.insertBefore(tagBox, imageDescription.parentElement);
-    newDiv.appendChild(adBox);
+    if (adBox !== null) {
+      newDiv.appendChild(adBox);
+    }
     newDiv.appendChild(imageDescription);
     if (descriptionForm !== null) {
       newDiv.appendChild(descriptionForm);

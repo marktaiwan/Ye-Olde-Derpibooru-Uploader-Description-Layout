@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Ye Olde Derpibooru Uploader Description Layout
 // @description Move uploader credit to its former location
-// @version     1.0.6
+// @version     1.0.7
 // @author      Marker
 // @license     MIT
 // @namespace   https://github.com/marktaiwan/
@@ -21,6 +21,7 @@
         descriptionForm = document.querySelector('#description-form'),
         content = document.querySelector('#content'),
         tagBox = document.querySelector('.js-tagsauce'),
+        tagEdit = tagBox.querySelector('.js-imageform'),
         adBox = document.querySelector('#imagespns');
 
   // Revert metadata bar
@@ -36,7 +37,9 @@
 
     // Revert tag width
     newDiv.classList.add('layout--narrow');
-    tagBox.querySelector('.js-imageform').classList.add('layout--narrow');
+    if (tagEdit !== null) {
+      tagEdit.classList.add('layout--narrow');
+    }
     content.insertBefore(newDiv, imageDescription.parentElement);
     content.insertBefore(tagBox, imageDescription.parentElement);
     newDiv.appendChild(adBox);

@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Ye Olde Derpibooru Uploader Description Layout
 // @description Move uploader credit to its former location
-// @version     1.0.8
+// @version     1.0.9
 // @author      Marker
 // @license     MIT
 // @namespace   https://github.com/marktaiwan/
@@ -21,7 +21,7 @@
         descriptionForm = document.querySelector('#description-form'),
         content = document.querySelector('#content'),
         tagBox = document.querySelector('.js-tagsauce'),
-        tagEdit = tagBox.querySelector('.js-imageform'),
+        tagEdit = document.querySelector('.js-imageform'),
         adBox = document.querySelector('#imagespns');
 
   // Revert metadata bar

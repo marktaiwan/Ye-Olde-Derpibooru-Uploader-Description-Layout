@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Ye Olde Derpibooru Uploader Description Layout
 // @description Move uploader credit to its former location
-// @version     1.0.9
+// @version     1.0.10
 // @author      Marker
 // @license     MIT
 // @namespace   https://github.com/marktaiwan/
@@ -51,7 +51,18 @@
     }
 
     // Revert description box styling
-    imageDescription.style.background = 'whitesmoke';
+    //   Adapt background color to theme, we create an element with the
+    //   styles we want, then copy the computed style to the description box
+    let ele = document.createElement('div');
+    ele.classList.add('button');
+    ele.style.padding = '0px';
+    ele.style.border = '0px';
+    ele.style.margin = '0px';
+    document.body.appendChild(ele);
+    let backgroundColor = window.getComputedStyle(ele).backgroundColor;
+    ele.remove();
+
+    imageDescription.style.background = backgroundColor;
     descriptionHeader.innerText = 'Uploader Description';
     descriptionHeader.style.margin = '5px';
     imageDescription.insertBefore(descriptionHeader, imageDescription.firstChild);

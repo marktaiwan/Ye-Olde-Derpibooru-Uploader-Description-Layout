@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Ye Olde Derpibooru Uploader Description Layout
 // @description Move uploader credit to its former location
-// @version     1.0.10
+// @version     1.0.11
 // @author      Marker
 // @license     MIT
 // @namespace   https://github.com/marktaiwan/
@@ -65,6 +65,10 @@
     imageDescription.style.background = backgroundColor;
     descriptionHeader.innerText = 'Uploader Description';
     descriptionHeader.style.margin = '5px';
+    if (imageDescription.querySelector('h6') !== null) {
+      imageDescription.querySelector('h6').remove();
+    }
+
     imageDescription.insertBefore(descriptionHeader, imageDescription.firstChild);
   }
 })();

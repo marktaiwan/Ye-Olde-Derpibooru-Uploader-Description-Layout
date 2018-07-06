@@ -1,16 +1,14 @@
 // ==UserScript==
 // @name        Ye Olde Derpibooru Uploader Description Layout
 // @description Move uploader credit to its former location
-// @version     1.0.12
+// @version     1.0.13
 // @author      Marker
 // @license     MIT
 // @namespace   https://github.com/marktaiwan/
 // @homepageURL https://github.com/marktaiwan/Ye-Olde-Derpibooru-Uploader-Description-Layout
 // @supportURL  https://github.com/marktaiwan/Ye-Olde-Derpibooru-Uploader-Description-Layout/issues
-// @include     https://derpibooru.org*
-// @include     derpibooru.org*
-// @include     https://trixiebooru.org*
-// @include     trixiebooru.org*
+// @include     https://*derpibooru.org*
+// @include     https://*trixiebooru.org*
 // @grant       none
 // @noframes
 // ==/UserScript==

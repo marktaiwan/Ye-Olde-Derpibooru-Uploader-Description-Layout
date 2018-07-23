@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Ye Olde Derpibooru Uploader Description Layout
 // @description Move uploader credit to its former location
-// @version     1.0.13
+// @version     1.0.14
 // @author      Marker
 // @license     MIT
 // @namespace   https://github.com/marktaiwan/
@@ -31,6 +31,7 @@
 
   const extrameta = document.querySelector('#extrameta'),
         imageDescription = document.querySelector('.image-description'),
+        imageDescriptionText = document.querySelector('.image-description__text'),
         descriptionForm = document.querySelector('#description-form'),
         content = document.querySelector('#content'),
         tagBox = document.querySelector('.js-tagsauce'),
@@ -61,7 +62,7 @@
   }
 
   // Run if elements exists on page
-  if ([content, imageDescription, tagBox].every(ele => ele !== null)) {
+  if ([content, imageDescription, tagBox, imageDescriptionText].every(ele => ele !== null)) {
     const newDiv = document.createElement('div');
 
     // Revert tag width
@@ -77,6 +78,9 @@
     newDiv.appendChild(imageDescription);
     if (descriptionForm !== null) {
       newDiv.appendChild(descriptionForm);
+    }
+    if (imageDescriptionText.innerText === '' && imageDescription.querySelector('#edit-description') === null) {
+      imageDescription.classList.toggle('hidden');
     }
   }
 })();

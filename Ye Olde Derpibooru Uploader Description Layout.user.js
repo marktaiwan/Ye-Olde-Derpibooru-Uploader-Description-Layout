@@ -7,24 +7,25 @@
 // @namespace   https://github.com/marktaiwan/
 // @homepageURL https://github.com/marktaiwan/Ye-Olde-Derpibooru-Uploader-Description-Layout
 // @supportURL  https://github.com/marktaiwan/Ye-Olde-Derpibooru-Uploader-Description-Layout/issues
-// @include     https://*derpibooru.org*
-// @include     https://*trixiebooru.org*
-// @grant       none
+// @include     https://derpibooru.org/*
+// @include     https://trixiebooru.org/*
+// @include     https://www.derpibooru.org/*
+// @include     https://www.trixiebooru.org/*
 // @noframes
 // ==/UserScript==
-(function(){
+(function (){
   'use strict';
 
   function getBackgroundColor() {
     //   Adapt background color to theme, we create an element with the
     //   styles we want, then copy the computed style to the description box
-    let ele = document.createElement('div');
+    const ele = document.createElement('div');
     ele.classList.add('button');
     ele.style.padding = '0px';
     ele.style.border = '0px';
     ele.style.margin = '0px';
     document.body.appendChild(ele);
-    let backgroundColor = window.getComputedStyle(ele).backgroundColor;
+    const backgroundColor = window.getComputedStyle(ele).backgroundColor;
     ele.remove();
     return backgroundColor;
   }

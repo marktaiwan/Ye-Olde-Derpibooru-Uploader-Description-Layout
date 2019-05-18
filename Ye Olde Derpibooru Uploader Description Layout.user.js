@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Ye Olde Derpibooru Uploader Description Layout
 // @description Move uploader credit to its former location
-// @version     1.0.15
+// @version     1.0.16
 // @author      Marker
 // @license     MIT
 // @namespace   https://github.com/marktaiwan/
@@ -12,6 +12,7 @@
 // @include     https://www.derpibooru.org/*
 // @include     https://www.trixiebooru.org/*
 // @grant       GM_addStyle
+// @inject-into content
 // @noframes
 // ==/UserScript==
 (function (){

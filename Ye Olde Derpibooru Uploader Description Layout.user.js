@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Ye Olde Derpibooru Uploader Description Layout
 // @description Move uploader credit to its former location
-// @version     1.0.17
+// @version     1.0.18
 // @author      Marker
 // @license     MIT
 // @namespace   https://github.com/marktaiwan/
@@ -87,7 +87,7 @@
     if (descriptionForm !== null) {
       newDiv.appendChild(descriptionForm);
     }
-    if (imageDescriptionText.innerText === '' && imageDescription.querySelector('#edit-description') === null) {
+    if (imageDescriptionText.firstChild === null && imageDescription.querySelector('#edit-description') === null) {
       imageDescription.classList.toggle('hidden');
     }
   }

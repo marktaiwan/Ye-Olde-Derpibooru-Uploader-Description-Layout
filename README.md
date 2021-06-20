@@ -4,4 +4,4 @@
 
 ~~[Click to install](https://github.com/marktaiwan/Ye-Olde-Derpibooru-Uploader-Description-Layout/raw/master/Ye%20Olde%20Derpibooru%20Uploader%20Description%20Layout.user.js)~~
 
-# Moved to [Derpibooru-Legacy-Image-Layout](/marktaiwan/Derpibooru-Legacy-Image-Layout)
+# Moved to [Derpibooru-Legacy-Image-Layout](https://github.com/marktaiwan/Derpibooru-Legacy-Image-Layout)
